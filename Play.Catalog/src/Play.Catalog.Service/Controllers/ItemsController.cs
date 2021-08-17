@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Play.Catalog.Service.Entities;
+using Play.Catalog.Service.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Play.Catalog.Service.Controllers
 {
@@ -9,66 +12,61 @@ namespace Play.Catalog.Service.Controllers
     [ApiController]
     public class ItemsController : ControllerBase
     {
-        private static readonly List<ItemDto> items = new()
-        {
-            new ItemDto(Guid.NewGuid(),
-                "Portion", "Restores a small amount of HP", 5, DateTimeOffset.UtcNow),
-            new ItemDto(Guid.NewGuid(),
-                "Antidote", "Cures poison", 7, DateTimeOffset.UtcNow),
-            new ItemDto(Guid.NewGuid(),
-                "Bronze  sword", "Deal as small amount of damage", 25, DateTimeOffset.UtcNow)
-        };
 
-        [HttpGet]
-        public IEnumerable<ItemDto> Get()
+        private readonly IItemsRepository _itemRepo;
+
+        public ItemsController(IItemsRepository itemsRepository)
         {
-            return items;
+            _itemRepo = itemsRepository;
+        }
+        [HttpGet]
+        public async Task<IEnumerable<ItemDto>> Get()
+        {
+            return (await _itemRepo.GetAllAsync())
+                    .Select(item => item.AsDtos());
         }
 
         [HttpGet("{id}")]
-        public ActionResult<ItemDto> GetById(Guid id)
+        public async Task<ActionResult<ItemDto>> GetById(Guid id)
         {
-            var item = items.SingleOrDefault(x => x.Id == id);
+            var item = (await _itemRepo.GetAsync(id)).AsDtos();
             return item is not null ? item : NotFound();
         }
 
         [HttpPost]
-        public ActionResult<ItemDto> Post(CreateItemDto createItem)
+        public async Task<ActionResult<ItemDto>> Post(CreateItemDto createItem)
         {
-            // create a item in the constructor , benefit of using record inserd of class
-            ItemDto item =
-            new(Guid.NewGuid(), createItem.Name, createItem.Description,
-            createItem.Price, DateTimeOffset.UtcNow);
-            items.Add(item);
+            Item item = new()
+            {
+                Name = createItem.Name,
+                Description = createItem.Description,
+                Price = createItem.Price,
+                CreatedDate = DateTimeOffset.UtcNow
+            };
+
+            await _itemRepo.CreateAsync(item);
 
             // get this from ActionResult
             return CreatedAtAction(nameof(GetById), new { Id = item.Id }, item);
         }
 
         [HttpPut("{id}")]
-        public ActionResult Put(Guid id, UpdateItemDto updateItem)
+        public async Task<ActionResult> Put(Guid id, UpdateItemDto updateItem)
         {
-            var item = items.SingleOrDefault(x => x.Id == id);
+            var item = await _itemRepo.GetAsync(id);
             if (item == null) return BadRequest();
-            var itemToUpdate = item with
-            {
-                Name = updateItem.Name,
-                Description = updateItem.Description,
-                Price = updateItem.Price
-            };
 
-            var index = items.FindIndex(it => item.Id == id);
-            items[index] = itemToUpdate;
-
+            item.Name = updateItem.Name ?? item.Name;
+            item.Description = updateItem.Description ?? item.Description;
+            item.Price = updateItem.Price > 0 ? updateItem.Price : item.Price;
+            await _itemRepo.UpdateAsync(item);
             return NoContent();
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(Guid id)
+        public async Task<IActionResult> Delete(Guid id)
         {
-            var item = items.SingleOrDefault(x => x.Id == id);
-            if (item == null) return BadRequest();
-            items.Remove(item);
+            await _itemRepo.RemoveAsync(id);
             return NoContent();
         }
     }
