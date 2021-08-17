@@ -66,7 +66,9 @@ namespace Play.Catalog.Service.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
-            await _itemRepo.RemoveAsync(id);
+            var item = await _itemRepo.GetAsync(id);
+            if (item is null) return BadRequest();
+            await _itemRepo.RemoveAsync(item.Id);
             return NoContent();
         }
     }
