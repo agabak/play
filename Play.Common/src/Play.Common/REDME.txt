@@ -1,0 +1,13 @@
+﻿For nuget package process
+
+--Go to the main folder 
+  dotnet pack -o ..\..\..\packages\
+
+
+
+--Go back to the folder you need to add nuget package - add package 
+  dotnet nuget add source C:\projects\packages -n name (PlayEconomy)
+
+
+-- Add a nuget to the project 
+  dotnet add package Play.Common
