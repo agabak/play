@@ -1,22 +1,23 @@
-﻿using MongoDB.Driver;
+﻿using Microsoft.Extensions.Options;
+using MongoDB.Driver;
 using Play.Catalog.Service.Entities;
+using Play.Catalog.Service.Settings;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Play.Catalog.Service.Repositories
 {
     public class ItemsRepository : IItemsRepository
     {
-        private const string CollectionName = "Items";
         private readonly IMongoCollection<Item> dbCollection;
         private readonly FilterDefinitionBuilder<Item>
                          filterBuilder = Builders<Item>.Filter;
 
-        public ItemsRepository(IMongoDatabase database)
+        public ItemsRepository(IMongoDatabase database,
+            IOptions<ServiceSettings> options)
         {
-            dbCollection = database.GetCollection<Item>(CollectionName);
+            dbCollection = database.GetCollection<Item>(options.Value.CollectionName);
         }
 
         public async Task<IReadOnlyCollection<Item>> GetAllAsync()

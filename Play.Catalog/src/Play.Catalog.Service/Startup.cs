@@ -27,8 +27,12 @@ namespace Play.Catalog.Service
             BsonSerializer.RegisterSerializer(new GuidSerializer(BsonType.String));
             BsonSerializer.RegisterSerializer(new DateTimeOffsetSerializer(BsonType.String));
 
-            serviceSettings = _config.GetSection(nameof(ServiceSettings)).Get<ServiceSettings>();
+            // expose setting to dependency injection
+            services.Configure<ServiceSettings>(_config.GetSection(nameof(ServiceSettings)));
 
+
+            serviceSettings = _config.GetSection(nameof(ServiceSettings)).Get<ServiceSettings>();
+           
             // you want to have the same instance at ll time
             services.AddSingleton(serviceProvider => 
             {
