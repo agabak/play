@@ -4,10 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using MongoDB.Bson;
-using MongoDB.Bson.Serialization;
-using MongoDB.Bson.Serialization.Serializers;
-using MongoDB.Driver;
+using Play.Catalog.Service.Entities;
 using Play.Catalog.Service.Repositories;
 using Play.Catalog.Service.Settings;
 
@@ -25,24 +22,11 @@ namespace Play.Catalog.Service
 
         public void ConfigureServices(IServiceCollection services)
         {
-            BsonSerializer.RegisterSerializer(new GuidSerializer(BsonType.String));
-            BsonSerializer.RegisterSerializer(new DateTimeOffsetSerializer(BsonType.String));
-
-            // expose setting to dependency injection
-            services.Configure<ServiceSettings>(_config.GetSection(nameof(ServiceSettings)));
-
+           
             serviceSettings = _config.GetSection(nameof(ServiceSettings)).Get<ServiceSettings>();
 
-            // you want to have the same instance at ll time
-            services.AddSingleton(serviceProvider =>
-            {
-                var mongodbSettings =
-                _config.GetSection(nameof(MongodbSettings)).Get<MongodbSettings>();
-                var mongoClient = new MongoClient(mongodbSettings.ConnectionString);
-                return mongoClient.GetDatabase(serviceSettings.ServiceName);
-            });
-
-            services.AddScoped<IItemsRepository, ItemsRepository>();
+            services.AddMongo()
+                    .AddMongoRepository<Item>("Items");
 
             services.AddControllers(opts =>
             {
