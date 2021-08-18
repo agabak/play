@@ -15,8 +15,9 @@ namespace Play.Catalog.Service
 {
     public class Startup
     {
-        private  ServiceSettings serviceSettings;
+        private ServiceSettings serviceSettings;
         private readonly IConfiguration _config;
+
         public Startup(IConfiguration configuration)
         {
             _config = configuration;
@@ -30,17 +31,16 @@ namespace Play.Catalog.Service
             // expose setting to dependency injection
             services.Configure<ServiceSettings>(_config.GetSection(nameof(ServiceSettings)));
 
-
             serviceSettings = _config.GetSection(nameof(ServiceSettings)).Get<ServiceSettings>();
-           
+
             // you want to have the same instance at ll time
-            services.AddSingleton(serviceProvider => 
+            services.AddSingleton(serviceProvider =>
             {
                 var mongodbSettings =
                 _config.GetSection(nameof(MongodbSettings)).Get<MongodbSettings>();
                 var mongoClient = new MongoClient(mongodbSettings.ConnectionString);
                 return mongoClient.GetDatabase(serviceSettings.ServiceName);
-            } );
+            });
 
             services.AddScoped<IItemsRepository, ItemsRepository>();
 
@@ -54,7 +54,6 @@ namespace Play.Catalog.Service
             });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

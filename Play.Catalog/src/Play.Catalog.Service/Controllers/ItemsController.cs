@@ -12,13 +12,13 @@ namespace Play.Catalog.Service.Controllers
     [ApiController]
     public class ItemsController : ControllerBase
     {
-
         private readonly IItemsRepository _itemRepo;
 
         public ItemsController(IItemsRepository itemsRepository)
         {
             _itemRepo = itemsRepository;
         }
+
         [HttpGet]
         public async Task<IEnumerable<ItemDto>> Get()
         {

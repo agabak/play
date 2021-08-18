@@ -11,6 +11,7 @@ namespace Play.Catalog.Service.Repositories
     public class ItemsRepository : IItemsRepository
     {
         private readonly IMongoCollection<Item> dbCollection;
+
         private readonly FilterDefinitionBuilder<Item>
                          filterBuilder = Builders<Item>.Filter;
 
@@ -52,4 +53,3 @@ namespace Play.Catalog.Service.Repositories
         }
     }
 }
-
