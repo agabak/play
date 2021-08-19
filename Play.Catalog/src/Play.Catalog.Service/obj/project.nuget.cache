@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "igEBxL2AiYEjSZ1UoKy6T3rRXChy5F+zrAgjZEZxqJWlk+b6ND504yvhevu/JV/8sW7+OMwojyqFCwUfaY6ONA==",
+  "dgSpecHash": "xUTv767ep2p0ls9zI+/wj1kHiQGD9QvdIwtnDUnmnlijOeZQTAu48hNjO44gEKK89V+rPkWMvbMf3L/mhpKYnQ==",
   "success": true,
   "projectFilePath": "C:\\projects\\Play.Catalog\\src\\Play.Catalog.Service\\Play.Catalog.Service.csproj",
   "expectedPackageFiles": [
@@ -28,6 +28,7 @@
     "C:\\Users\\akabunga\\.nuget\\packages\\microsoft.netcore.platforms\\2.1.2\\microsoft.netcore.platforms.2.1.2.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\akabunga\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\akabunga\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.10.9\\microsoft.visualstudio.azure.containers.tools.targets.1.10.9.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\akabunga\\.nuget\\packages\\mongodb.bson\\2.11.6\\mongodb.bson.2.11.6.nupkg.sha512",
     "C:\\Users\\akabunga\\.nuget\\packages\\mongodb.driver\\2.11.6\\mongodb.driver.2.11.6.nupkg.sha512",
