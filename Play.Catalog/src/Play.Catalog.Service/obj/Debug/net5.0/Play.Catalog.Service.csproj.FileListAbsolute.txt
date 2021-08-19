@@ -33,7 +33,6 @@ C:\projects\Play.Catalog\src\Play.Catalog.Service\bin\Debug\net5.0\Swashbuckle.A
 C:\projects\Play.Catalog\src\Play.Catalog.Service\bin\Debug\net5.0\runtimes\win\native\libzstd.dll
 C:\projects\Play.Catalog\src\Play.Catalog.Service\bin\Debug\net5.0\runtimes\win\native\snappy32.dll
 C:\projects\Play.Catalog\src\Play.Catalog.Service\bin\Debug\net5.0\runtimes\win\native\snappy64.dll
-C:\projects\Play.Catalog\src\Play.Catalog.Service\obj\Debug\net5.0\Play.Catalog.Service.csprojAssemblyReference.cache
 C:\projects\Play.Catalog\src\Play.Catalog.Service\obj\Debug\net5.0\Play.Catalog.Service.GeneratedMSBuildEditorConfig.editorconfig
 C:\projects\Play.Catalog\src\Play.Catalog.Service\obj\Debug\net5.0\Play.Catalog.Service.AssemblyInfoInputs.cache
 C:\projects\Play.Catalog\src\Play.Catalog.Service\obj\Debug\net5.0\Play.Catalog.Service.AssemblyInfo.cs
@@ -49,3 +48,4 @@ C:\projects\Play.Catalog\src\Play.Catalog.Service\obj\Debug\net5.0\Play.Catalog.
 C:\projects\Play.Catalog\src\Play.Catalog.Service\obj\Debug\net5.0\ref\Play.Catalog.Service.dll
 C:\projects\Play.Catalog\src\Play.Catalog.Service\obj\Debug\net5.0\Play.Catalog.Service.pdb
 C:\projects\Play.Catalog\src\Play.Catalog.Service\obj\Debug\net5.0\Play.Catalog.Service.genruntimeconfig.cache
+C:\projects\Play.Catalog\src\Play.Catalog.Service\obj\Debug\net5.0\Play.Catalog.Service.csprojAssemblyReference.cache
