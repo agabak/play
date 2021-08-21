@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Play.Catalog.Service", "Play.Catalog.Service.csproj", "{1542C0F4-76B2-4518-A4E5-2633DBEC0401}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Play.Common", "..\..\..\Play.Common\src\Play.Common\Play.Common.csproj", "{98061395-B834-44FA-B834-6F26D0F35611}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{5391D07C-140A-4C59-AC09-BCFD46C7D88D}"
@@ -19,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1542C0F4-76B2-4518-A4E5-2633DBEC0401}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1542C0F4-76B2-4518-A4E5-2633DBEC0401}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1542C0F4-76B2-4518-A4E5-2633DBEC0401}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1542C0F4-76B2-4518-A4E5-2633DBEC0401}.Release|Any CPU.Build.0 = Release|Any CPU
 		{98061395-B834-44FA-B834-6F26D0F35611}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{98061395-B834-44FA-B834-6F26D0F35611}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98061395-B834-44FA-B834-6F26D0F35611}.Release|Any CPU.ActiveCfg = Release|Any CPU

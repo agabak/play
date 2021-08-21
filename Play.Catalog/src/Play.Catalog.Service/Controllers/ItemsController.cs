@@ -67,6 +67,7 @@ namespace Play.Catalog.Service.Controllers
             item.Description = updateItem.Description ?? item.Description;
             item.Price = updateItem.Price > 0 ? updateItem.Price : item.Price;
             await _itemRepo.UpdateAsync(item);
+            await _publishEndpoint.Publish(new CatalogItemUpdate(item.Id, item.Name, item.Description));
             return NoContent();
         }
 
@@ -76,6 +77,7 @@ namespace Play.Catalog.Service.Controllers
             var item = await _itemRepo.GetAsync(id);
             if (item is null) return BadRequest();
             await _itemRepo.RemoveAsync(item.Id);
+            await _publishEndpoint.Publish(new CatalogItemDeleted(id));
             return NoContent();
         }
     }

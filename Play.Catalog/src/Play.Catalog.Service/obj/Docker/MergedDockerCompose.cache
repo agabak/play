@@ -9,7 +9,7 @@ services:
     - mongodbdata:/data/db:rw
   play.catalog.service:
     build:
-      context: C:\projects\Play.Catalog\src\Play.Catalog.Service
+      context: C:\projects\project\play\Play.Catalog\src\Play.Catalog.Service
       dockerfile: Dockerfile
     environment:
       ASPNETCORE_ENVIRONMENT: Development
@@ -19,7 +19,7 @@ services:
     - target: 5000
     - target: 5001
     volumes:
-    - C:\Users\akabunga\AppData\Roaming\ASP.NET\Https:/root/.aspnet/httpcd \cds:ro
+    - C:\Users\Agaba\AppData\Roaming\ASP.NET\Https:/root/.aspnet/httpcd \cds:ro
 version: '3.8'
 volumes:
   mongodbdata: {}
