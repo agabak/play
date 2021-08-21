@@ -9,4 +9,3 @@ C:\projects\Play.Common\src\Play.Common\obj\Debug\net5.0\Play.Common.csproj.Core
 C:\projects\Play.Common\src\Play.Common\obj\Debug\net5.0\Play.Common.dll
 C:\projects\Play.Common\src\Play.Common\obj\Debug\net5.0\ref\Play.Common.dll
 C:\projects\Play.Common\src\Play.Common\obj\Debug\net5.0\Play.Common.pdb
-C:\projects\Play.Common\src\Play.Common\obj\Debug\net5.0\Play.Common.csprojAssemblyReference.cache

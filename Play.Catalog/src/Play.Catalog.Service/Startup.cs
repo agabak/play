@@ -60,3 +60,7 @@ namespace Play.Catalog.Service
         }
     }
 }
+
+//Package need for MassTransit
+// MassTransit.AspNetCore
+// MassTransit.RabbitMq

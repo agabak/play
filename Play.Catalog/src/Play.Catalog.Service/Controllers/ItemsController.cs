@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MassTransit;
+using Microsoft.AspNetCore.Mvc;
 using Play.Catalog.Service.Entities;
 using Play.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Play.Catalog.Contracts;
 
 namespace Play.Catalog.Service.Controllers
 {
@@ -13,10 +15,14 @@ namespace Play.Catalog.Service.Controllers
     public class ItemsController : ControllerBase
     {
         private readonly IRepository<Item> _itemRepo;
+        private readonly IPublishEndpoint _publishEndpoint;
 
-        public ItemsController(IRepository<Item> itemsRepository)
+        public ItemsController(
+            IRepository<Item> itemsRepository,
+            IPublishEndpoint publishEndpoint)
         {
             _itemRepo = itemsRepository;
+            _publishEndpoint = publishEndpoint;
         }
 
         [HttpGet]
@@ -45,6 +51,7 @@ namespace Play.Catalog.Service.Controllers
             };
 
             await _itemRepo.CreateAsync(item);
+            await _publishEndpoint.Publish(new CatalogItemCreate(item.Id,item.Name,item.Description));
 
             // get this from ActionResult
             return CreatedAtAction(nameof(GetById), new { Id = item.Id }, item);

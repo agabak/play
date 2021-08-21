@@ -33,13 +33,13 @@ namespace Play.Inventory.Service.Controllers
             var catalogItems = await _catalogClient.GetCatalogItemsAsync();
             var inventoryItemEntites = (await _repository.GetAllAsync(item => item.UserId == userid)).ToList();
 
-            var inventoryItems =  inventoryItemEntites.Select(inventoryItem =>
+            var inventoryItemDtos =  inventoryItemEntites.Select(inventoryItem =>
                 {
                    var catalogItem = 
                    catalogItems.Single(catalogItem => catalogItem.Id == inventoryItem.CatalogItemId);
                    return inventoryItem.AsDto(catalogItem.Name, catalogItem.Description);
                  });
-            return Ok(inventoryItems);
+            return Ok(inventoryItemDtos);
         }
 
         [HttpPost]

@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Play.Common", "..\..\..\Pla
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{5391D07C-140A-4C59-AC09-BCFD46C7D88D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Play.Inventory.Service", "..\..\..\Play.Inventory\src\Play.Inventory.Service\Play.Inventory.Service.csproj", "{ECAA1F53-C89F-4E8C-BA3E-28F69FD0229D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Play.Inventory.Service", "..\..\..\Play.Inventory\src\Play.Inventory.Service\Play.Inventory.Service.csproj", "{ECAA1F53-C89F-4E8C-BA3E-28F69FD0229D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Play.Catalog.Contracts", "..\Play.Catalog.Contracts\Play.Catalog.Contracts.csproj", "{7D35BE0D-EC9D-41D2-87FF-5B8A155B58B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{ECAA1F53-C89F-4E8C-BA3E-28F69FD0229D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ECAA1F53-C89F-4E8C-BA3E-28F69FD0229D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ECAA1F53-C89F-4E8C-BA3E-28F69FD0229D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D35BE0D-EC9D-41D2-87FF-5B8A155B58B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D35BE0D-EC9D-41D2-87FF-5B8A155B58B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D35BE0D-EC9D-41D2-87FF-5B8A155B58B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D35BE0D-EC9D-41D2-87FF-5B8A155B58B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
